@@ -18,7 +18,7 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    //Books can have moren than one author and visa verse
+    //Books can have more than one author and visa verse
     //ManyToMany: we will have many authors and many books
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
@@ -54,4 +54,42 @@ public class Author {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    //This is my outcome, this is not JSON format
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
+    //I add hash code by using generate
+    //I implement the equals and hash code hibernate determine if two objects are the same objects or not
+    //In this case I used/selected only Id to make them the same
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Author author)) return false;
+
+        return getId() != null ? getId().equals(author.getId()) : author.getId() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getId() != null ? getId().hashCode() : 0;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
