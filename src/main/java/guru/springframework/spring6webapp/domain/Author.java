@@ -2,6 +2,7 @@ package guru.springframework.spring6webapp.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 //if you use jakarta, JPA will say this is the entity to database. I will use same thing for book
@@ -21,7 +22,7 @@ public class Author {
     //Books can have more than one author and visa verse
     //ManyToMany: we will have many authors and many books
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     public Set<Book> getBooks() {
         return books;
