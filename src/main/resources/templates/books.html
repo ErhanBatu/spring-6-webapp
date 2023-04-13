@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Framework Guru</title>
+</head>
+<body>
+<h1>Book List</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Publisher</th>
+    </tr>
+<!--    we are saying for each and saying with ${books} tymeleaf look at the model for property called book-->
+    <tr th:each="book : ${books}">
+<!--        we are saying here th:text="${book.id}" replace with book id-->
+<!--        it will change 123 with the book id-->
+        <td th:text="${book.id}">123</td>
+<!--        it will change Spring in Action with the title-->
+        <td th:text="${book.title}"> Spring in Action</td>
+<!--        it will change Wrox with the publisher name-->
+        <td th:text="${book.publisher.publisherName}">Wrox</td>
+    </tr>
+</table>
+
+</body>
+</html>
